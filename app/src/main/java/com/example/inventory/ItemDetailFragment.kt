@@ -79,6 +79,9 @@ class ItemDetailFragment : Fragment() {
             // sell button
             sellItem.isEnabled = viewModel.isStockAvailable(item)
             sellItem.setOnClickListener { viewModel.sellItem(item) }
+
+            // delete button
+            deleteItem.setOnClickListener { showConfirmationDialog() }
         }
     }
 
@@ -101,6 +104,7 @@ class ItemDetailFragment : Fragment() {
      * Deletes the current item and navigates to the list fragment.
      */
     private fun deleteItem() {
+        viewModel.deleteItem(item)
         findNavController().navigateUp()
     }
 

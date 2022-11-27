@@ -51,6 +51,10 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
             updateItem(newItem)
         }
     }
+
+    fun deleteItem(item: Item) {
+        viewModelScope.launch { itemDao.delete(item) }
+    }
 }
 
 class InventoryViewModelFactory(private val itemDao: ItemDao) : ViewModelProvider.Factory {
